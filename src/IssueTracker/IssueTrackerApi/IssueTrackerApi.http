@@ -1,6 +1,4 @@
-@IssueTrackerApi_HostAddress = http://localhost:5031
+@IssueTrackerApi_HostAddress = http://localhost:1337
 
-GET {{IssueTrackerApi_HostAddress}}/weatherforecast/
-Accept: application/json
 
-###
+GET {{IssueTrackerApi_HostAddress}}/status

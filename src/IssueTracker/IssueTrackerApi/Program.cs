@@ -18,6 +18,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers(); // looks for all the classes that are controllers (public, controllbase, etc.) and reads those "route" attributes. and creates a "route table"
 
-app.Run();
+app.Run(); // kestrel is up and running listening for requests.
