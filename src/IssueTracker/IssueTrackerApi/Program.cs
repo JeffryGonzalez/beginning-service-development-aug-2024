@@ -1,3 +1,5 @@
+using IssueTrackerApi.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Above this line is configuring the "services" for our API.
+builder.Services.AddScoped<ILookupSupportInfo, TemporarySupportLookup>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,3 +25,5 @@ app.UseAuthorization();
 app.MapControllers(); // looks for all the classes that are controllers (public, controllbase, etc.) and reads those "route" attributes. and creates a "route table"
 
 app.Run(); // kestrel is up and running listening for requests.
+
+public partial class Program { }
