@@ -1,8 +1,8 @@
 ﻿
 
 using Alba;
+using IssueTracker.Shared;
 using IssueTrackerApi.Controllers;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace IssueTrackerApi.Tests.Status;
 public class GettingTheStatus
@@ -24,7 +24,7 @@ public class GettingTheStatus
         {
             config.ConfigureServices(sp =>
             {
-                sp.AddScoped<ILookupSupportInfo, FakeSupportLookup>();
+                //sp.AddScoped<ILookupSupportInfo, FakeSupportLookup>();
             });
         });
 

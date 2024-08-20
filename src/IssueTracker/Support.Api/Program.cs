@@ -21,7 +21,7 @@ app.MapGet("/support-info", () =>
     var response = new SupportContactResponseModel
     {
         EMail = "bob@company.com",
-        Phone = "800 123-123"
+        Phone = "800 123-1234"
     };
     return Results.Ok(response);
 });
