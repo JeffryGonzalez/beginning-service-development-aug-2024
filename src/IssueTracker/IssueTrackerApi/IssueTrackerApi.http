@@ -2,3 +2,21 @@
 
 
 GET {{IssueTrackerApi_HostAddress}}/status
+
+
+### Adding an Issue
+
+POST {{IssueTrackerApi_HostAddress}}/issues
+Content-Type: application/json
+
+{
+  "Software": "Taco Salad",
+  "description": "Won't Update",
+  "impact": "Inconvenience"
+  
+}
+
+
+### Get My Issue
+
+GET {{IssueTrackerApi_HostAddress}}/issues/e183dc36-2092-4609-a829-bae9cd0eb717

@@ -1,5 +1,6 @@
 using IssueTrackerApi.Controllers;
 using IssueTrackerApi.TypedClients;
+using Marten;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,15 @@ builder.Services.AddHttpClient<SupportApiClient>(client =>
 {
     client.BaseAddress = new Uri(supportApiUri);
     // any other configuration you need for the client is here.
-});
+}); // retry policy, circuit 
+
+var issuesConnectionString = builder.Configuration.GetConnectionString("data")
+    ?? throw new Exception("No data connection string");
+builder.Services.AddMarten(config =>
+{
+    config.Connection(issuesConnectionString);
+}).UseLightweightSessions();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
