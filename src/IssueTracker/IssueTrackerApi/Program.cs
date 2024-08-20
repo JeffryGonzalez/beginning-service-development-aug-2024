@@ -1,4 +1,5 @@
 using IssueTrackerApi.Controllers;
+using IssueTrackerApi.TypedClients;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,14 @@ builder.Services.AddSwaggerGen();
 // Above this line is configuring the "services" for our API.
 builder.Services.AddScoped<ILookupSupportInfo, TemporarySupportLookup>();
 builder.Services.AddSingleton<HitCounter>();
+
+var supportApiUri = builder.Configuration.GetValue<string>("supportApiUrl")
+    ?? throw new Exception("No support api url");
+builder.Services.AddHttpClient<SupportApiClient>(client =>
+{
+    client.BaseAddress = new Uri(supportApiUri);
+    // any other configuration you need for the client is here.
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
