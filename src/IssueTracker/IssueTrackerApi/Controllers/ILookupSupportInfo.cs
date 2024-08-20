@@ -1,5 +1,4 @@
-﻿
-namespace IssueTrackerApi.Controllers;
+﻿namespace IssueTrackerApi.Controllers;
 
 public interface ILookupSupportInfo
 {

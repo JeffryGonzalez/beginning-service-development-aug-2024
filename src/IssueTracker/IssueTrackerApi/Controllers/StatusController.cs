@@ -7,22 +7,22 @@ public class StatusController : ControllerBase
 {
     private ILookupSupportInfo supportLookup;
 
-    private HitCounter counter;
-    public StatusController(ILookupSupportInfo supportLookup, HitCounter counter)
+
+    public StatusController(ILookupSupportInfo supportLookup)
     {
         this.supportLookup = supportLookup;
-        this.counter = counter;
+
     }
 
     [HttpGet("/status")]
     public async Task<ActionResult> GetTheStatus()
     {
         // do some work here -
-        counter.Increment();
+
         SupportContactResponseModel supportInfo = await supportLookup.GetCurrentSupportInfoAsync();
         var response = new StatusResponseModel
         {
-            Message = "Looks Good Here, Boss! " + counter.GetHitCounter(),
+            Message = "Looks Good Here, Boss!",
             SupportContact = supportInfo
 
         };
@@ -37,10 +37,4 @@ public record StatusResponseModel
 
     public SupportContactResponseModel SupportContact { get; set; } = new();
 
-}
-
-public record SupportContactResponseModel
-{
-    public string EMail { get; set; } = string.Empty;
-    public string Phone { get; set; } = string.Empty;
 }

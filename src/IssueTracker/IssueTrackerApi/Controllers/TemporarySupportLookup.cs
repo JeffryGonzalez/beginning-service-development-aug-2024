@@ -1,4 +1,5 @@
 ﻿
+
 namespace IssueTrackerApi.Controllers;
 
 public class TemporarySupportLookup : ILookupSupportInfo
