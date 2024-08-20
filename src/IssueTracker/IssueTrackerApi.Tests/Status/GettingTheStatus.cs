@@ -48,6 +48,7 @@ public class FakeSupportLookup : ILookupSupportInfo
 {
     public async Task<SupportContactResponseModel> GetCurrentSupportInfoAsync()
     {
+
         return new SupportContactResponseModel
         {
             EMail = "franco@company.com",

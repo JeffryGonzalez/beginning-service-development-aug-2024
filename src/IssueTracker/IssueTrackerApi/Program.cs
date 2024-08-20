@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 
 // Above this line is configuring the "services" for our API.
 builder.Services.AddScoped<ILookupSupportInfo, TemporarySupportLookup>();
+builder.Services.AddSingleton<HitCounter>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
