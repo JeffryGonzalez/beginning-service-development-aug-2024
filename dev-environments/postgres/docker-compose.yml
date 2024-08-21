@@ -1,4 +1,10 @@
 services:
+  support:
+    image: jeffrygonzalez/support-api-aug-2024:v1
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__data="Server=someserver...."
+
   db:
     image: postgres:16.2-bullseye
     restart: always

@@ -6,7 +6,7 @@ GET {{IssueTrackerApi_HostAddress}}/status
 
 ### Get the Status
 
-GET {{IssueTrackerApi_HostAddress}}/status/support
+GET http://localhost:1338/support-info
 ### Adding an Issue
 
 POST {{IssueTrackerApi_HostAddress}}/issues
