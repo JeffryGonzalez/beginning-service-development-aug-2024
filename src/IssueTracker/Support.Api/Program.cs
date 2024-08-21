@@ -18,6 +18,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/support-info", () =>
 {
+    Thread.Sleep(3000);
     var response = new SupportContactResponseModel
     {
         EMail = "bob@company.com",

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace IssueTrackerApi.Controllers;
 
@@ -6,7 +7,7 @@ namespace IssueTrackerApi.Controllers;
 public class StatusController : ControllerBase
 {
     private ILookupSupportInfo supportLookup;
-
+    // Udi Dahan - 
 
     public StatusController(ILookupSupportInfo supportLookup)
     {
@@ -19,14 +20,22 @@ public class StatusController : ControllerBase
     {
         // do some work here -
 
-        SupportContactResponseModel supportInfo = await supportLookup.GetCurrentSupportInfoAsync();
+
         var response = new StatusResponseModel
         {
             Message = "Looks Good Here, Boss!",
-            SupportContact = supportInfo
+            SupportInfoLink = "/status/support"
 
         };
         return Ok(response);
+    }
+
+    [HttpGet("/status/support")]
+    [OutputCache(Duration = 3600)]
+    public async Task<ActionResult> GetSupportInfo()
+    {
+        SupportContactResponseModel supportInfo = await supportLookup.GetCurrentSupportInfoAsync();
+        return Ok(supportInfo);
     }
 }
 
@@ -35,6 +44,6 @@ public record StatusResponseModel
 {
     public string Message { get; set; } = string.Empty;
 
-    public SupportContactResponseModel SupportContact { get; set; } = new();
+    public string SupportInfoLink { get; set; } = string.Empty;
 
 }
