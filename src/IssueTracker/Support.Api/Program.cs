@@ -18,11 +18,11 @@ if (app.Environment.IsDevelopment())
 
 app.MapGet("/support-info", () =>
 {
-    Thread.Sleep(3000);
+
     var response = new SupportContactResponseModel
     {
-        EMail = "bob@company.com",
-        Phone = "800 123-1234"
+        EMail = "jeff@company.com",
+        Phone = "800 867-5309"
     };
     return Results.Ok(response);
 });
